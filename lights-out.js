@@ -39,32 +39,14 @@ var turnOffAllLight = function(result){
   }
 }
 
-var turnOnAllLight = function(result){
-      
-  //turn them off.
-  var state = lightState.create().on();
-  
-  //setup queue
-  var q = async.queue(function (light, callback) {
-      api.setLightState(light.id, state, callback);  
-  }, 3);
-  
-  //add to queue
-  result.lights.forEach(function(light){
-      q.push(light);
-  });
-  
-  //drain queue
-  q.drain = function() {
-      console.log('all lights are off');
-  }
-}
-
 //when press detected, turns off all the lights
 offDash.on("detected", function (){
-    api.lights().then(turnOffAllLight).done(); 
+  api.lights().then(turnOffAllLight).done(); 
 });
 
 onDash.on("detected", function (){
-    api.lights().then(turnOnAllLight).done(); 
+  var state = lightState.create().on().brightness(50);
+  api.setLightState(10, state, function(result){
+    console.log("Bedroom lights on");
+  }); 
 });
