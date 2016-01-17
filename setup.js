@@ -19,12 +19,3 @@ state = lightState.create().on().white(500, 100);
 api.setLightState(11, state)
     .then(displayResult)
     .done();
-
-// --------------------------
-// Using a callback
-/*
-api.setLightState(5, state, function(err, lights) {
-    if (err) throw err;
-    displayResult(lights);
-});
-*/
