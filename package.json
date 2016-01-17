@@ -1,0 +1,15 @@
+{
+  "name": "dash-hue",
+  "version": "0.1.0",
+  "description": "A sample Node.js app using Express 4",
+  "main": "lights-out.js",
+  "scripts": {
+    "start": "sudo node lights-out.js"
+  },
+  "dependencies": {
+    "async": "*",
+    "node-dash-button": "^0.2.6",
+    "node-hue-api": "^2.0.0"
+  },
+  "license": "MIT"
+}
